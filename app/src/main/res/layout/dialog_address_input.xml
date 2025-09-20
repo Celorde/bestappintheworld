@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="20dp"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/addressEditText"
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:importantForAutofill="no"
+        android:textSize="20sp"
+        android:hint="@string/insert_address_hint"
+        android:cursorVisible="false"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="LabelFor,TextFields" />
+
+    <include layout="@layout/t9_keyboard_layout"
+        android:id="@+id/keyboardLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/addressEditText"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

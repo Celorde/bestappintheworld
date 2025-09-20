@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="20dp"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/stateEditText"
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:importantForAutofill="no"
+        android:textSize="20sp"
+        android:hint="@string/insert_state_hint"
+        android:cursorVisible="false"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="LabelFor,TextFields" />
+
+    <ImageView
+        android:id="@+id/stateBaseImageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:alpha="1"
+        android:contentDescription="@null"
+        android:scaleType="fitStart"
+        android:src="@drawable/brazilian_colored_states"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stateEditText" />
+
+    <ImageView
+        android:id="@+id/stateSelectionImageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:alpha="1"
+        android:contentDescription="@null"
+        android:scaleType="fitStart"
+        android:src="@drawable/south_america_satellite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stateEditText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
