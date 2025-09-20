@@ -18,4 +18,3 @@ gradle.properties
 gradlew
 gradle/wrapper
 gradlew.bat
-settings.gradle.kts
