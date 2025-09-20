@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="20dp"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/phoneEditText"
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:importantForAutofill="no"
+        android:textSize="20sp"
+        android:hint="@string/insert_phone_hint"
+        android:cursorVisible="false"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="LabelFor,TextFields" />
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        xmlns:motion="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/motionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        motion:layoutDescription="@xml/dice_motion_scene"
+        app:layout_constraintTop_toBottomOf="@+id/phoneEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/diceImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:contentDescription="@null"
+            android:src="@drawable/dice_1"
+            android:scaleType="fitCenter"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/phoneEditText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/livesTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:text="@string/insert_phone_lives_remaining"
+            motion:layout_constraintStart_toEndOf="@+id/diceImageView"
+            motion:layout_constraintTop_toBottomOf="@+id/diceImageView"/>
+
+        <Button
+            android:id="@+id/buttonRolada"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Rolada"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <Button
+            android:id="@+id/buttonConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="É esse número"
+            app:layout_constraintStart_toEndOf="@+id/buttonRolada"
+            app:layout_constraintTop_toTopOf="@+id/buttonRolada" />
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

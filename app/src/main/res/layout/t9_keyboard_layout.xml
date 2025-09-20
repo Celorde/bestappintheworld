@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/t9_keyboard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:columnCount="3"
+    android:padding="8dp">
+
+    <Button android:id="@+id/key1" android:text="@string/key1" android:layout_height="56dp" />
+    <Button android:id="@+id/key2" android:text="@string/key2" android:layout_height="56dp" />
+    <Button android:id="@+id/key3" android:text="@string/key3" android:layout_height="56dp" />
+
+    <Button android:id="@+id/key4" android:text="@string/key4" android:layout_height="56dp" />
+    <Button android:id="@+id/key5" android:text="@string/key5" android:layout_height="56dp" />
+    <Button android:id="@+id/key6" android:text="@string/key6" android:layout_height="56dp" />
+
+    <Button android:id="@+id/key7" android:text="@string/key7" android:layout_height="56dp" />
+    <Button android:id="@+id/key8" android:text="@string/key8" android:layout_height="56dp" />
+    <Button android:id="@+id/key9" android:text="@string/key9" android:layout_height="56dp" />
+
+    <Button android:id="@+id/key_star" android:text="@string/keyStar" android:layout_height="56dp" />
+    <Button android:id="@+id/key0" android:text="@string/key0" android:layout_height="56dp" />
+    <Button android:id="@+id/key_delete" android:text="@string/keyBackspace" android:layout_height="56dp" />
+
+</GridLayout>

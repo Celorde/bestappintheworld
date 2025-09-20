@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/nameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/insert_name"
+        android:textSize="24sp"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <EditText
+        android:id="@+id/nameEditText"
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:importantForAutofill="no"
+        android:textSize="20sp"
+        android:hint="@string/insert_name_hint"
+        android:cursorVisible="false"
+        android:inputType="none"
+        app:layout_constraintTop_toBottomOf="@id/nameTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="LabelFor" />
+
+    <TextView
+        android:id="@+id/nicknameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/insert_nickname"
+        android:textSize="24sp"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/nameEditText"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <EditText
+        android:id="@+id/nicknameEditText"
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:importantForAutofill="no"
+        android:textSize="20sp"
+        android:hint="@string/insert_nickname_hint"
+        android:cursorVisible="false"
+        android:inputType="none"
+        app:layout_constraintTop_toBottomOf="@id/nicknameTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="LabelFor" />
+
+    <ImageView
+        android:id="@+id/nicknameSoundImage"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/sound"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@+id/nicknameEditText"
+        app:layout_constraintBottom_toBottomOf="@+id/nicknameEditText"
+        app:layout_constraintStart_toEndOf="@+id/nicknameEditText" />
+
+    <TextView
+        android:id="@+id/insertBirthdateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/insert_birthdate"
+        android:textSize="24sp"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@id/nicknameEditText"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <EditText
+        android:id="@+id/insertBirthdateEditText"
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:hint="@string/insert_birthdate_hint"
+        android:focusable="false"
+        android:cursorVisible="false"
+        android:inputType="none"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@id/insertBirthdateTextView"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/insertAgeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/insert_age"
+        android:textSize="24sp"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@id/insertBirthdateEditText"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <EditText
+        android:id="@+id/insertAgeEditText"
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:hint="@string/insert_age_hint"
+        android:inputType="text"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@id/insertAgeTextView"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/romanNumbersLinkTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Link"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/insertAgeEditText"
+        app:layout_constraintTop_toBottomOf="@id/insertAgeEditText"
+        tools:visibility="visible"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/insertSexTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/insert_sex"
+        android:textSize="24sp"
+        android:visibility="gone"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@id/romanNumbersLinkTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible"/>
+
+    <EditText
+        android:id="@+id/insertSexEditText"
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:hint="@string/insert_sex_hint"
+        android:inputType="none"
+        android:visibility="gone"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@id/insertSexTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible"/>
+
+    <TextView
+        android:id="@+id/insertSingleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/insert_single"
+        android:textSize="24sp"
+        android:visibility="gone"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@id/insertSexEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible"/>
+
+    <EditText
+        android:id="@+id/insertSingleEditText"
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:hint="@string/insert_single_hint"
+        android:inputType="none"
+        android:visibility="gone"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@id/insertSingleTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

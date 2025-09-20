@@ -1,0 +1,41 @@
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetStart="@+id/start"
+        motion:constraintSetEnd="@+id/end"
+        motion:duration="750">
+
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+
+        <Constraint android:id="@id/diceImageView">
+            <Layout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="36dp" />
+            <Transform
+                android:rotation="0"
+                android:scaleX="1"
+                android:scaleY="1" />
+        </Constraint>
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+
+        <Constraint android:id="@id/diceImageView">
+            <Layout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="36dp" />
+            <Transform
+                android:rotation="720"
+                android:scaleX="1.2"
+                android:scaleY="1.2" />
+        </Constraint>
+
+    </ConstraintSet>
+
+</MotionScene>

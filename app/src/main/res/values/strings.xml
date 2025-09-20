@@ -1,0 +1,121 @@
+<resources>
+    <string name="app_name">Best UI In The World</string>
+
+    <string name="ok_button">OK</string>
+    <string name="cancel_button">Cancelar</string>
+    <string name="continue_button">Continuar</string>
+
+    <string name="insert_name">Qual é o seu Nome?</string>
+    <string name="insert_name_hint">Nome</string>
+    <string name="insert_name_dialog_title">Selecione uma letra</string>
+
+    <string name="insert_nickname">Qual o seu Nickname?</string>
+    <string name="insert_nickname_hint">enzo_2007_minecraft</string>
+
+    <string name="insert_email">Qual é o seu Email?</string>
+    <string name="insert_email_hint">email@email.com</string>
+    <string name="insert_email_add_or_remove_title">Você quer Adicionar ou Remover uma letra?</string>
+    <string name="insert_email_dialog_title">A letra está correta?</string>
+
+    <string name="confirm_email">Confirme seu e-mail</string>
+
+    <string name="insert_birthdate">Qual sua Data de Nascimento?</string>
+    <string name="insert_birthdate_hint">01/01/1900</string>
+
+    <string name="insert_age">Qual a sua Idade?</string>
+    <string name="insert_age_hint">50</string>
+    <string name="roman_numbers_link">https://pt.wikipedia.org/wiki/Numera%C3%A7%C3%A3o_romana</string>
+
+    <string name="insert_sex">Sexo?</string>
+    <string name="insert_sex_hint">Sexo</string>
+    <string name="insert_sex_dialog_title">Quantas vezes por semana?</string>
+
+    <string name="insert_single">Estado Civil</string>
+    <string name="insert_single_hint">Solteiro</string>
+
+    <string name="insert_address_code">Qual o seu CEP?</string>
+    <string name="insert_address_code_hint">00000000</string>
+    <string name="do_not_know_address_code_link">Não sei meu CEP</string>
+
+    <string name="insert_neighborhood">Qual o seu Bairro?</string>
+    <string name="insert_neighborhood_hint">Ipanema</string>
+
+    <string name="insert_address">Qual a sua Rua?</string>
+    <string name="insert_address_hint">Rua Jorge</string>
+
+    <string name="insert_state">Qual o seu Estado?</string>
+    <string name="insert_state_hint">Rio Grande do Norte</string>
+
+    <string name="insert_city">Qual a sua Cidade?</string>
+    <string name="insert_city_hint">São Paulo</string>
+
+    <string name="insert_number">Qual o seu Número?</string>
+    <string name="insert_number_hint">Número</string>
+    <string name="insert_number_value">Casa número: %s</string>
+
+    <string name="insert_complement">Qual o seu Complemento?</string>
+    <string name="insert_complement_hint">Apto 111</string>
+
+    <string name="insert_reference_point">Ponto de Referência</string>
+    <string name="insert_reference_point_hint">Referência</string>
+    <string name="insert_reference_point_suggestion">Você está perto de %s?</string>
+    <string name="insert_reference_point_suggestion_2">Você está realmente perto de %s?</string>
+    <string name="insert_reference_point_suggestion_3">Da pra ir a pé até esse %s?</string>
+    <string name="insert_reference_point_suggestion_4">Se você gritar agora, vão te ouvir %s?</string>
+
+    <string name="insert_phone">Qual o seu Telefone?</string>
+    <string name="insert_phone_hint">(99) 99999–9999</string>
+    <string name="insert_phone_lives_remaining">Vidas extras: %s</string>
+
+    <string name="insert_streamer">Qual o seu Streamer favorito?</string>
+    <string name="insert_streamer_hint">Cellbit</string>
+
+    <string name="insert_favorite_color">Qual a sua Cor favorita?</string>
+    <string name="insert_favorite_color_hint">Vermelho</string>
+
+    <string name="confirm_favorite_color">Confirme a sua Cor favorita</string>
+    <string name="confirm_favorite_color_hint">Azul</string>
+
+    <string name="heart_club">Time do Coração</string>
+    <string name="heart_club_hint">São Paulo</string>
+    <string name="heart_club_color">Escolha sua cor</string>
+
+    <string name="favorite_plate">Qual seu prato favorito?</string>
+    <string name="favorite_plate_hint">Macarronada</string>
+
+    <string name="favorite_dish">Qual sua receita favorita?</string>
+    <string name="favorite_dish_hint">Macarronada</string>
+    <string name="ingredient_hint">Extrato de tomate</string>
+    <string name="ingredient_quantity_hint">100g</string>
+    <string name="add_ingredient">Adicionar Ingrediente</string>
+    <string name="ingredient_index">Ingrediente %d</string>
+
+    <string name="foot_size">Qual o tamanho do seu pé?</string>
+    <string name="foot_size_hint">48</string>
+    <string name="foot_size_dialog">Qual o tamanho do seu pé, em pés?</string>
+    <string name="foot_size_hint_dialog">1</string>
+    <plurals name="foot_size_shoe_size_text">
+        <item quantity="one">Você tem %scm de pé.\n1 pé possui %scm.\nPortanto, quantos pés você calça?</item>
+        <item quantity="other">Você tem %scm somando seus pés.\n2 pés somados possuem %scm.\nPortanto, quantos pés você calça?</item>
+    </plurals>
+
+    <string name="insert_password">Qual a sua Senha?</string>
+    <string name="insert_password_hint">celorde123</string>
+
+    <string name="dont_know_my_foot_button">Não sei o tamanho em pés</string>
+    <string name="dont_know_my_foot_shoe_size">Quanto você calça?</string>
+    <string name="dont_know_my_foot_shoe_size_hint">45</string>
+
+    <string name="key1">1\n</string>
+    <string name="key2">2\n%s</string>
+    <string name="key3">3\n%s</string>
+    <string name="key4">4\n%s</string>
+    <string name="key5">5\n%s</string>
+    <string name="key6">6\n%s</string>
+    <string name="key7">7\n%s</string>
+    <string name="key8">8\n%s</string>
+    <string name="key9">9\n%s</string>
+    <string name="keyStar">*\n</string>
+    <string name="key0">0\n␣</string>
+    <string name="keyBackspace">⌫\n</string>
+</resources>
