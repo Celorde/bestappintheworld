@@ -15,7 +15,7 @@
 .cxx
 local.properties
 gradle.properties
-gradle/
 gradlew
+gradle/wrapper
 gradlew.bat
 settings.gradle.kts
