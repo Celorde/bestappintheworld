@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.bestuiintheworld"
+    namespace = "com.bestappintheworld"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.bestuiintheworld"
+        applicationId = "com.bestappintheworld"
         minSdk = 24
         targetSdk = 35
         versionCode = 1

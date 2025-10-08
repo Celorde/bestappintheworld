@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="LabelFor,TextFields" />
 
-    <com.example.bestuiintheworld.ui.DrawingView
+    <com.example.bestappintheworld.ui.DrawingView
         android:id="@+id/clubDrawingView"
         android:layout_width="0dp"
         android:layout_height="360dp"

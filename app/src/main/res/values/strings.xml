@@ -101,6 +101,7 @@
 
     <string name="insert_password">Qual a sua Senha?</string>
     <string name="insert_password_hint">celorde123</string>
+    <string name="insert_password_confirmation">Confirme a sua Senha</string>
 
     <string name="dont_know_my_foot_button">Não sei o tamanho em pés</string>
     <string name="dont_know_my_foot_shoe_size">Quanto você calça?</string>
