@@ -10,22 +10,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.RadioButton
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.children
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.example.bestappintheworld.MainActivity
 import com.bestappintheworld.R
+import com.bestappintheworld.commons.SchoolDegree
+import com.bestappintheworld.databinding.DialogBirthdateInputBinding
+import com.bestappintheworld.databinding.DialogSchoolDegreeInputBinding
+import com.bestappintheworld.databinding.DialogSchoolDegreeTermoBinding
+import com.bestappintheworld.databinding.FragmentPersonalDataBinding
+import com.example.bestappintheworld.MainActivity
 import com.example.bestappintheworld.commons.Utils
 import com.example.bestappintheworld.commons.hideKeyboard
 import com.example.bestappintheworld.commons.openUrl
 import com.example.bestappintheworld.commons.showKeyboard
 import com.example.bestappintheworld.commons.showToast
 import com.example.bestappintheworld.components.OnVolumeKeyPressed
-import com.bestappintheworld.databinding.DialogBirthdateInputBinding
-import com.bestappintheworld.databinding.FragmentPersonalDataBinding
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
@@ -47,6 +52,8 @@ class PersonalDataFragment : Fragment(), OnVolumeKeyPressed {
     private var selectionTimer: Handler? = null
     private val delayMillis = 1000L
     private var shouldConfirmLetter = false
+
+    private lateinit var schoolDegreeInputDialog: AlertDialog
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -202,6 +209,14 @@ class PersonalDataFragment : Fragment(), OnVolumeKeyPressed {
                 isAgeBlocked = false
                 binding.romanNumbersLinkTextView.isVisible = false
             }
+
+            insertSchoolDegreeEditText.apply {
+                keyListener = null
+
+                setOnClickListener {
+                    showSchoolDegreeInputDialog()
+                }
+            }
         }
     }
 
@@ -253,6 +268,41 @@ class PersonalDataFragment : Fragment(), OnVolumeKeyPressed {
         }
 
         birthdateInputDialog.show()
+    }
+
+    private fun showSchoolDegreeInputDialog() {
+        val dialogView = DialogSchoolDegreeInputBinding.inflate(layoutInflater)
+        schoolDegreeInputDialog = AlertDialog.Builder(requireContext())
+            .setTitle(getString(R.string.insert_school_degree))
+            .setView(dialogView.root)
+            .setPositiveButton(getString(R.string.ok_button)) { _, _ ->
+                val radioButtonId = dialogView.radioGroup.checkedRadioButtonId
+                val selectedRadioButton =
+                    dialogView.radioGroup.children.find { it.id == radioButtonId } as RadioButton
+
+                val newDialogView = DialogSchoolDegreeTermoBinding.inflate(layoutInflater)
+                val termoDialog = AlertDialog.Builder(requireContext())
+                    .setTitle(getString(R.string.termo_title, selectedRadioButton.text))
+                    .setView(newDialogView.root)
+                    .setPositiveButton("Sim", null)
+                    .setNegativeButton("Não", null)
+                    .create()
+
+                newDialogView.termoGame.setData(
+                    editText = binding.insertSchoolDegreeEditText,
+                    schoolDegree = SchoolDegree.getDegreeByValue(
+                        value = selectedRadioButton.text.toString()
+                    ), {
+                        schoolDegreeInputDialog?.dismiss()
+                    }
+                )
+
+                termoDialog.show()
+            }
+            .setNegativeButton(getString(R.string.cancel_button)) { _, _ -> }
+            .create()
+
+        schoolDegreeInputDialog.show()
     }
 
     private fun setDateToField(textView: TextView, dayOfYear: Int, year: Int) {

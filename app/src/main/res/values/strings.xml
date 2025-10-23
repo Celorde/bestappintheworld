@@ -33,6 +33,23 @@
     <string name="insert_single">Estado Civil</string>
     <string name="insert_single_hint">Solteiro</string>
 
+    <string name="insert_school_degree">Qual a sua Escolaridade?</string>
+    <string name="insert_school_degree_hint">Ensino médio</string>
+
+    <string name="school_degree_post_graduate">Pós Graduação</string>
+    <string name="school_degree_college">Ensino Superior</string>
+    <string name="school_degree_high_school">Ensino Médio</string>
+    <string name="school_degree_middle_school">Ensino Fundamental</string>
+    <string name="school_degree_kinder_garden">Jardim de Infância</string>
+
+    <string name="termo_title">Para provar que você possui %s, acerte a palavra do dia:</string>
+    <string name="termo_hint">Digite uma palavra</string>
+    <string name="termo_button">Enviar</string>
+    <string name="termo_victory">🎉 Você acertou! A palavra era %s</string>
+    <string name="termo_lose">😢 Fim de jogo! A palavra era %</string>
+    <string name="termo_wrong_word">Palavra não reconhecida!</string>
+    <string name="termo_wrong_char_quantity">A palavra deve ter 5 letras!</string>
+
     <string name="insert_address_code">Qual o seu CEP?</string>
     <string name="insert_address_code_hint">00000000</string>
     <string name="do_not_know_address_code_link">Não sei meu CEP</string>
