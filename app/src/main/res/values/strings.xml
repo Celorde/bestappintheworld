@@ -36,6 +36,10 @@
     <string name="insert_school_degree">Qual a sua Escolaridade?</string>
     <string name="insert_school_degree_hint">Ensino médio</string>
 
+    <string name="insert_profession">Qual a sua Profissão?</string>
+    <string name="insert_profession_hint">Mecânico</string>
+    <string name="create_profession_avatar_title">Monte o boneco de acordo com sua profissão</string>
+
     <string name="school_degree_post_graduate">Pós Graduação</string>
     <string name="school_degree_college">Ensino Superior</string>
     <string name="school_degree_high_school">Ensino Médio</string>

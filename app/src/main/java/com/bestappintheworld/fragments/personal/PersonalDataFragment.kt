@@ -21,6 +21,7 @@ import androidx.lifecycle.lifecycleScope
 import com.bestappintheworld.R
 import com.bestappintheworld.commons.SchoolDegree
 import com.bestappintheworld.databinding.DialogBirthdateInputBinding
+import com.bestappintheworld.databinding.DialogProfessionInputBinding
 import com.bestappintheworld.databinding.DialogSchoolDegreeInputBinding
 import com.bestappintheworld.databinding.DialogSchoolDegreeTermoBinding
 import com.bestappintheworld.databinding.FragmentPersonalDataBinding
@@ -217,6 +218,14 @@ class PersonalDataFragment : Fragment(), OnVolumeKeyPressed {
                     showSchoolDegreeInputDialog()
                 }
             }
+
+            insertProfessionEditText.apply {
+                keyListener = null
+
+                setOnClickListener {
+                    showProfessionInputDialog()
+                }
+            }
         }
     }
 
@@ -293,11 +302,26 @@ class PersonalDataFragment : Fragment(), OnVolumeKeyPressed {
                     schoolDegree = SchoolDegree.getDegreeByValue(
                         value = selectedRadioButton.text.toString()
                     ), {
-                        schoolDegreeInputDialog?.dismiss()
+                        schoolDegreeInputDialog.dismiss()
                     }
                 )
 
                 termoDialog.show()
+            }
+            .setNegativeButton(getString(R.string.cancel_button)) { _, _ -> }
+            .create()
+
+        schoolDegreeInputDialog.show()
+    }
+
+    private fun showProfessionInputDialog() {
+        val dialogView = DialogProfessionInputBinding.inflate(layoutInflater)
+        schoolDegreeInputDialog = AlertDialog.Builder(requireContext())
+            .setTitle(getString(R.string.create_profession_avatar_title))
+            .setView(dialogView.root)
+            .setPositiveButton(getString(R.string.ok_button)) { _, _ ->
+                val selectedProfession = dialogView.avatarGame.parseSelectedProfession()
+                binding.insertProfessionEditText.setText(selectedProfession)
             }
             .setNegativeButton(getString(R.string.cancel_button)) { _, _ -> }
             .create()
