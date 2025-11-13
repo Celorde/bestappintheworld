@@ -34,7 +34,9 @@ class AvatarDragAndDrop @JvmOverloads constructor(
             ProfessionItem(icon = ProfessionItems.BEARD, category = ItemsCategory.BEARD),
             ProfessionItem(icon = ProfessionItems.GLASSES, category = ItemsCategory.GLASSES),
             ProfessionItem(icon = ProfessionItems.HAT, category = ItemsCategory.HAT),
-            ProfessionItem(icon = ProfessionItems.ACCESSORY, category = ItemsCategory.ACCESSORY)
+            ProfessionItem(icon = ProfessionItems.ACCESSORY, category = ItemsCategory.ACCESSORY),
+            ProfessionItem(icon = ProfessionItems.JOYSTICK, category = ItemsCategory.ACCESSORY),
+            ProfessionItem(icon = ProfessionItems.HEADSET, category = ItemsCategory.ACCESSORY)
         )
 
         for (item in items) {
@@ -74,7 +76,9 @@ class AvatarDragAndDrop @JvmOverloads constructor(
             "barba" to R.id.imgBarba,
             "oculos" to R.id.imgOculos,
             "chapeu" to R.id.imgChapeu,
-            "acessorio" to R.id.imgAcessorio
+            "acessorio" to R.id.imgAcessorio,
+            "controle" to R.id.imgAcessorio,
+            "headset" to R.id.imgAcessorio
         )
 
         val selectedItem = ProfessionItems.getProfessionByValue(itemType)
@@ -87,7 +91,8 @@ class AvatarDragAndDrop @JvmOverloads constructor(
     fun parseSelectedProfession(): String {
         val itemCombination: Map<List<ProfessionItems>, String> = mapOf(
             listOf(ProfessionItems.COAT, ProfessionItems.GLASSES) to "Faria Limer",
-            listOf(ProfessionItems.BEARD, ProfessionItems.GLASSES) to "Dentista"
+            listOf(ProfessionItems.BEARD, ProfessionItems.GLASSES) to "Dentista",
+            listOf(ProfessionItems.JOYSTICK, ProfessionItems.HEADSET) to "Desempregado"
         )
 
         val itemKey = selectedItems.sorted()

@@ -6,9 +6,14 @@ import android.content.Intent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 
+
+fun Activity.showToast(text: String) {
+    Toast.makeText(this, text, Toast.LENGTH_LONG).show()
+}
 
 fun Fragment.showToast(text: String) {
     Toast.makeText(requireContext(), text, Toast.LENGTH_LONG).show()
