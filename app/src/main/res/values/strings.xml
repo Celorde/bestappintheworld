@@ -180,4 +180,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac odio at turpis
     <string name="keyStar">*\n</string>
     <string name="key0">0\n␣</string>
     <string name="keyBackspace">⌫\n</string>
+
+    <string name="captcha_title">Captcha</string>
+    <string name="captcha_subtitle">Para confirmar que você não é um robô, realize o Captcha abaixo</string>
+    <string name="captcha_percentage_result">O seu círculo ficou %s%% perfeito.</string>
+    <string name="captcha_success">Muito bom, você não é um robô!</string>
+    <string name="captcha_fail_low">Seu círculo ficou terrível! Faça de novo, pelo amor de Deus</string>
+    <string name="captcha_fail_high">Impossível um ser humano fazer um círculo tão bom. Você é um robô. Por segurança, faça novamente</string>
 </resources>

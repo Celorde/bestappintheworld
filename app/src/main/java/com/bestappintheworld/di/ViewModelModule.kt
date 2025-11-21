@@ -1,5 +1,6 @@
 package com.example.bestappintheworld.di
 
+import com.bestappintheworld.fragments.security.CaptchaViewModel
 import com.example.bestappintheworld.fragments.address.AddressViewModel
 import com.example.bestappintheworld.fragments.contact.ContactViewModel
 import com.example.bestappintheworld.fragments.extrainfo.ExtraInfoViewModel
@@ -15,4 +16,5 @@ val viewModelModule = module {
     viewModel { AddressViewModel() }
     viewModel { ExtraInfoViewModel() }
     viewModel { PasswordViewModel() }
+    viewModel { CaptchaViewModel() }
 }
