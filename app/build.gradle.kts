@@ -45,6 +45,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.appcompat)
+    implementation(libs.google.material)
     implementation(libs.koin.core)
     implementation(libs.koin.android)
     implementation(libs.androidx.recyclerview)
