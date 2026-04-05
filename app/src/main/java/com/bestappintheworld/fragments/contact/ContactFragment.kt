@@ -1,4 +1,4 @@
-package com.example.bestappintheworld.fragments.contact
+package com.bestappintheworld.fragments.contact
 
 import android.os.Bundle
 import android.text.InputType
@@ -10,8 +10,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.bestappintheworld.R
-import com.example.bestappintheworld.commons.Utils.diceFaces
-import com.example.bestappintheworld.commons.showToast
+import com.bestappintheworld.commons.Utils.diceFaces
+import com.bestappintheworld.commons.showToast
 import com.bestappintheworld.databinding.DialogEmailInputBinding
 import com.bestappintheworld.databinding.DialogPhoneInputBinding
 import com.bestappintheworld.databinding.FragmentContactBinding
@@ -35,7 +35,7 @@ class ContactFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentContactBinding.inflate(inflater, container, false)
         return binding.root
     }

@@ -1,4 +1,4 @@
-package com.example.bestappintheworld.fragments.password
+package com.bestappintheworld.fragments.password
 
 import android.os.Bundle
 import android.text.method.PasswordTransformationMethod
@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.bestappintheworld.R
 import com.bestappintheworld.databinding.FragmentPasswordBinding
-import com.example.bestappintheworld.commons.showToast
+import com.bestappintheworld.commons.showToast
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -28,7 +28,7 @@ class PasswordFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentPasswordBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -47,7 +47,7 @@ class PasswordFragment : Fragment() {
     private fun setupStateListeners() {
         viewModel.apply {
             lifecycleScope.launch {
-                uiState.collect { uiState ->
+                uiState.collect { _ ->
                 }
             }
 

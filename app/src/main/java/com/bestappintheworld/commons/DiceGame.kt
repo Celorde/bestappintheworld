@@ -1,7 +1,8 @@
-package com.example.bestappintheworld.commons
+package com.bestappintheworld.commons
 
 import com.badlogic.gdx.ApplicationAdapter
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.InputAdapter
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.PerspectiveCamera
 import com.badlogic.gdx.graphics.g3d.Environment
@@ -48,7 +49,7 @@ class DiceGame : ApplicationAdapter() {
         diceModel = objLoader.loadModel(Gdx.files.internal("models/d12.obj"))
         diceInstance = ModelInstance(diceModel)
 
-        Gdx.input.inputProcessor = object : com.badlogic.gdx.InputAdapter() {
+        Gdx.input.inputProcessor = object : InputAdapter() {
             override fun touchDown(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean {
                 rollDice()
                 return true

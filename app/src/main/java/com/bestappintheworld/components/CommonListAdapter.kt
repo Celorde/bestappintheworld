@@ -1,4 +1,4 @@
-package com.example.bestappintheworld.components
+package com.bestappintheworld.components
 
 import android.view.LayoutInflater
 import android.view.View

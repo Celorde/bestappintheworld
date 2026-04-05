@@ -1,4 +1,4 @@
-package com.example.bestappintheworld.fragments.address
+package com.bestappintheworld.fragments.address
 
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
@@ -17,17 +17,17 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bestappintheworld.R
-import com.example.bestappintheworld.commons.Utils
-import com.example.bestappintheworld.commons.hideKeyboard
-import com.example.bestappintheworld.commons.showToast
-import com.example.bestappintheworld.components.OnItemClickListener
+import com.bestappintheworld.commons.Utils
+import com.bestappintheworld.commons.hideKeyboard
+import com.bestappintheworld.commons.showToast
+import com.bestappintheworld.components.OnItemClickListener
 import com.bestappintheworld.databinding.DialogAddressInputBinding
 import com.bestappintheworld.databinding.DialogNumberInputBinding
 import com.bestappintheworld.databinding.DialogReferencePointInputBinding
 import com.bestappintheworld.databinding.DialogSelectCityBinding
 import com.bestappintheworld.databinding.DialogStateInputBinding
 import com.bestappintheworld.databinding.FragmentAddressBinding
-import com.example.bestappintheworld.ui.T9Keyboard
+import com.bestappintheworld.ui.T9Keyboard
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.Locale
@@ -45,7 +45,7 @@ class AddressFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentAddressBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -168,13 +168,13 @@ class AddressFragment : Fragment() {
                                     if ((selectedChar != null && selectedChar == ' ') || writtenChar == ' ') oldValue else text.toString()
                                         .substring(0, insertComplementEditText.text.length - 1)
                                 val newText = if (selectedChar != null) {
-                                    parsedText.toString() + if (writtenChar.isLowerCase() != false) {
+                                    parsedText + if (writtenChar.isLowerCase()) {
                                         selectedChar
                                     } else {
                                         selectedChar.uppercaseChar()
                                     }
                                 } else {
-                                    parsedText.toString()
+                                    parsedText
                                 }
 
                                 oldValue = newText
@@ -188,7 +188,7 @@ class AddressFragment : Fragment() {
                         }
                     })
 
-                it.setOnFocusChangeListener { view, hasFocus ->
+                it.setOnFocusChangeListener { _, hasFocus ->
                     if (!hasFocus) {
                         hideKeyboard()
                     }
@@ -205,7 +205,7 @@ class AddressFragment : Fragment() {
                 }
 
                 it.addTextChangedListener(
-                    onTextChanged = { text, start, before, count ->
+                    onTextChanged = { _, _, before, count ->
                         if (before > count) {
                             //TODO Loading -> Processando - esperar 7 segundos
                             it.setText("")
@@ -344,11 +344,12 @@ class AddressFragment : Fragment() {
     }
 
     private fun showReferencePointInputDialog() {
-        var okCount = 0
-        var referencePoints: MutableList<String> = Utils.referencePlaces.toMutableList()
+        val referencePoints: MutableList<String> = Utils.referencePlaces.toMutableList()
         val dialogView = DialogReferencePointInputBinding.inflate(layoutInflater)
 
+        var okCount = 0
         var selectedPlace = referencePoints.random()
+
         referencePoints.remove(selectedPlace)
 
         dialogView.insertReferencePointTextView.text = getString(

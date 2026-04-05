@@ -1,4 +1,4 @@
-package com.example.bestappintheworld.fragments.personal
+package com.bestappintheworld.fragments.personal
 
 import android.annotation.SuppressLint
 import android.icu.util.Calendar
@@ -18,20 +18,20 @@ import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import com.bestappintheworld.MainActivity
 import com.bestappintheworld.R
 import com.bestappintheworld.commons.SchoolDegree
+import com.bestappintheworld.commons.Utils
+import com.bestappintheworld.commons.hideKeyboard
+import com.bestappintheworld.commons.openUrl
+import com.bestappintheworld.commons.showKeyboard
+import com.bestappintheworld.commons.showToast
+import com.bestappintheworld.components.OnVolumeKeyPressed
 import com.bestappintheworld.databinding.DialogBirthdateInputBinding
 import com.bestappintheworld.databinding.DialogProfessionInputBinding
 import com.bestappintheworld.databinding.DialogSchoolDegreeInputBinding
 import com.bestappintheworld.databinding.DialogSchoolDegreeTermoBinding
 import com.bestappintheworld.databinding.FragmentPersonalDataBinding
-import com.example.bestappintheworld.MainActivity
-import com.example.bestappintheworld.commons.Utils
-import com.example.bestappintheworld.commons.hideKeyboard
-import com.example.bestappintheworld.commons.openUrl
-import com.example.bestappintheworld.commons.showKeyboard
-import com.example.bestappintheworld.commons.showToast
-import com.example.bestappintheworld.components.OnVolumeKeyPressed
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
@@ -60,7 +60,7 @@ class PersonalDataFragment : Fragment(), OnVolumeKeyPressed {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentPersonalDataBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -103,7 +103,10 @@ class PersonalDataFragment : Fragment(), OnVolumeKeyPressed {
 
                     if (currentText.isNotEmpty()) {
                         nicknameEditText.setText(currentText.dropLast(1))
-                        confirmedText.deleteAt(confirmedText.length - 1)
+
+                        if (confirmedText.isNotEmpty()) {
+                            confirmedText.deleteAt(confirmedText.length - 1)
+                        }
                     }
                 }
                 return true
@@ -152,7 +155,7 @@ class PersonalDataFragment : Fragment(), OnVolumeKeyPressed {
             }
 
             nicknameEditText.apply {
-                setOnFocusChangeListener { view, hasFocus ->
+                setOnFocusChangeListener { _, hasFocus ->
                     nicknameSoundImage.isVisible = hasFocus
                     //TODO Colocar uma música incrível.
                     // Notificação do WhatsApp
@@ -194,7 +197,7 @@ class PersonalDataFragment : Fragment(), OnVolumeKeyPressed {
                     viewModel.validateRomanNumerals(text = text.toString())
                 })
 
-                setOnFocusChangeListener { view, hasFocus ->
+                setOnFocusChangeListener { _, hasFocus ->
                     if (!hasFocus) hideKeyboard()
 
                     viewModel.validateAgeText(
@@ -271,7 +274,7 @@ class PersonalDataFragment : Fragment(), OnVolumeKeyPressed {
                 if (hasReleasedFinger) {
                     editText.setText(dialogView.insertBirthdateTextView.text)
                     birthdateInputDialog.dismiss()
-                    initialYear = initialYear - 10
+                    initialYear -= 10
                 }
             }
         }

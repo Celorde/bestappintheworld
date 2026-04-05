@@ -1,4 +1,4 @@
-package com.example.bestappintheworld.commons
+package com.bestappintheworld.commons
 
 import android.graphics.Bitmap
 import android.graphics.Matrix

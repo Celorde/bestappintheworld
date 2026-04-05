@@ -40,12 +40,12 @@ class CaptchaFragment : Fragment() {
     private fun setupStateListeners() {
         viewModel.apply {
             lifecycleScope.launch {
-                uiState.collect { uiState ->
+                uiState.collect { _ ->
                 }
             }
 
             lifecycleScope.launch {
-                passwordEvent.collect { event ->
+                passwordEvent.collect { _ ->
                 }
             }
         }

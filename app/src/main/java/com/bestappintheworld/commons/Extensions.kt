@@ -1,4 +1,4 @@
-package com.example.bestappintheworld.commons
+package com.bestappintheworld.commons
 
 import android.app.Activity
 import android.content.Context
@@ -6,9 +6,9 @@ import android.content.Intent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
+import kotlin.text.iterator
 
 
 fun Activity.showToast(text: String) {

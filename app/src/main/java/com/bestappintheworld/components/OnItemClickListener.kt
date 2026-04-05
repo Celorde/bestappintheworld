@@ -1,4 +1,4 @@
-package com.example.bestappintheworld.components
+package com.bestappintheworld.components
 
 interface OnItemClickListener {
     fun onItemClick(item: String)

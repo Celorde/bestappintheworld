@@ -1,4 +1,4 @@
-package com.example.bestappintheworld.fragments.extrainfo
+package com.bestappintheworld.fragments.extrainfo
 
 data class FootSizeAnswer(
     val answer1: Answer?,

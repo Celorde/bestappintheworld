@@ -1,4 +1,4 @@
-package com.example.bestappintheworld.ui
+package com.bestappintheworld.ui
 
 import android.content.Context
 import android.util.AttributeSet

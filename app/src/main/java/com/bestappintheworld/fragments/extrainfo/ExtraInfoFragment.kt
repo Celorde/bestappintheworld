@@ -1,4 +1,4 @@
-package com.example.bestappintheworld.fragments.extrainfo
+package com.bestappintheworld.fragments.extrainfo
 
 import android.content.Context
 import android.graphics.Color
@@ -23,10 +23,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bestappintheworld.R
-import com.example.bestappintheworld.commons.Utils
-import com.example.bestappintheworld.commons.Utils.plateList
-import com.example.bestappintheworld.commons.showToast
-import com.example.bestappintheworld.components.OnItemClickListener
+import com.bestappintheworld.commons.Utils
+import com.bestappintheworld.commons.Utils.plateList
+import com.bestappintheworld.commons.showToast
+import com.bestappintheworld.components.OnItemClickListener
 import com.bestappintheworld.databinding.DialogDrawClubBinding
 import com.bestappintheworld.databinding.DialogFavoriteColorPickerBinding
 import com.bestappintheworld.databinding.DialogFavoriteDishBinding
@@ -35,7 +35,7 @@ import com.bestappintheworld.databinding.DialogFootConversionBinding
 import com.bestappintheworld.databinding.DialogFootSizeMeasureBinding
 import com.bestappintheworld.databinding.DialogStreamersOptionsBinding
 import com.bestappintheworld.databinding.FragmentExtraInfoBinding
-import com.example.bestappintheworld.ui.IngredientView
+import com.bestappintheworld.ui.IngredientView
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.Locale
@@ -56,7 +56,7 @@ class ExtraInfoFragment : Fragment(), SensorEventListener {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentExtraInfoBinding.inflate(inflater, container, false)
 
         sensorManager = requireActivity().getSystemService(Context.SENSOR_SERVICE) as SensorManager
@@ -288,7 +288,7 @@ class ExtraInfoFragment : Fragment(), SensorEventListener {
         val favoritePlateDialog = DialogFavoritePlateBinding.inflate(layoutInflater)
         var dialog: AlertDialog? = null
 
-        var remainingPlates = plateList.toMutableMap()
+        val remainingPlates = plateList.toMutableMap()
 
         var leftDraftedPlate = drawNewPlate(remainingPlates)
         var rightDraftedPlate = drawNewPlate(remainingPlates)
@@ -358,7 +358,7 @@ class ExtraInfoFragment : Fragment(), SensorEventListener {
     }
 
     private fun drawNewPlate(remainingPlates: MutableMap<Int, String>): Int {
-        var leftDraftedPlate = remainingPlates.keys.random()
+        val leftDraftedPlate = remainingPlates.keys.random()
         remainingPlates.remove(leftDraftedPlate)
 
         return leftDraftedPlate
@@ -386,9 +386,7 @@ class ExtraInfoFragment : Fragment(), SensorEventListener {
             favoriteDishDialog.containerLinearLayout.addView(newIngredienteField)
         }
 
-        var dialog: AlertDialog? = null
-
-        dialog = AlertDialog.Builder(requireContext())
+        val dialog = AlertDialog.Builder(requireContext())
             .setTitle(getString(R.string.favorite_dish))
             .setView(favoriteDishDialog.root)
             .setPositiveButton("OK", null)

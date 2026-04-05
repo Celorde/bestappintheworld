@@ -1,9 +1,9 @@
-package com.example.bestappintheworld.fragments.contact
+package com.bestappintheworld.fragments.contact
 
 import android.os.Handler
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.bestappintheworld.commons.Utils
+import com.bestappintheworld.commons.Utils
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

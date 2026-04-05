@@ -1,9 +1,10 @@
-package com.example.bestappintheworld
+package com.bestappintheworld
 
 import android.app.Application
 import android.content.Intent
 import com.bestappintheworld.commons.ContextUtils
-import com.example.bestappintheworld.di.viewModelModule
+import com.example.bestappintheworld.DiceApp
+import com.bestappintheworld.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.GlobalContext.startKoin
 

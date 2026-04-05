@@ -1,11 +1,11 @@
-package com.example.bestappintheworld.fragments.extrainfo
+package com.bestappintheworld.fragments.extrainfo
 
 import android.hardware.SensorManager
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.badlogic.gdx.math.MathUtils
-import com.example.bestappintheworld.commons.Utils
-import com.example.bestappintheworld.commons.formatDecimals
+import com.bestappintheworld.commons.Utils
+import com.bestappintheworld.commons.formatDecimals
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -183,7 +183,7 @@ class ExtraInfoViewModel : ViewModel() {
     }
 
     private fun generateRandomAnswer(min: Float, max: Float): Float {
-        var delta = 0f
+        var delta: Float
         do {
             delta = MathUtils.random(min, max)
         } while (delta == 0.0f)

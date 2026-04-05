@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <com.example.bestappintheworld.ui.CannonBallGame
+    <com.bestappintheworld.ui.CannonBallGame
         android:id="@+id/cannonBallView"
         android:layout_width="match_parent"
         android:layout_height="600dp"

@@ -1,4 +1,4 @@
-package com.example.bestappintheworld.fragments.address
+package com.bestappintheworld.fragments.address
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bestappintheworld.R
-import com.example.bestappintheworld.commons.BrazilUtils.BrazilianCities
-import com.example.bestappintheworld.commons.StringUtils.normalizeWord
-import com.example.bestappintheworld.components.OnItemClickListener
+import com.bestappintheworld.commons.BrazilUtils.BrazilianCities
+import com.bestappintheworld.commons.StringUtils.normalizeWord
+import com.bestappintheworld.components.OnItemClickListener
 
 class CityAdapter (private val listener: OnItemClickListener) :
     RecyclerView.Adapter<CityAdapter.WordViewHolder>() {

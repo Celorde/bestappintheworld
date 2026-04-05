@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="LabelFor,TextFields" />
 
-    <com.example.bestappintheworld.ui.ColorPickerTray
+    <com.bestappintheworld.ui.ColorPickerTray
         android:id="@+id/colorPickerTray"
         android:layout_width="match_parent"
         android:layout_height="400dp"

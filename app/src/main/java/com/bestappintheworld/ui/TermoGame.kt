@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.bestappintheworld.commons.SchoolDegree
 import com.bestappintheworld.databinding.DialogTermoGameBinding
+import androidx.core.graphics.toColorInt
 
 enum class FinalDegree { CORRECT, BELOW, ABOVE }
 
@@ -114,9 +115,9 @@ class TermoGame @JvmOverloads constructor(
 
     private fun getColorForStatus(status: LetterStatus): Int {
         return when (status) {
-            LetterStatus.CORRECT -> Color.parseColor("#6AAA64") // Verde
-            LetterStatus.PRESENT -> Color.parseColor("#C9B458") // Amarelo
-            LetterStatus.ABSENT -> Color.parseColor("#787C7E") // Cinza
+            LetterStatus.CORRECT -> "#6AAA64".toColorInt() // Verde
+            LetterStatus.PRESENT -> "#C9B458".toColorInt() // Amarelo
+            LetterStatus.ABSENT -> "#787C7E".toColorInt() // Cinza
         }
     }
 

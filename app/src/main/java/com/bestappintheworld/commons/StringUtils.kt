@@ -1,6 +1,7 @@
-package com.example.bestappintheworld.commons
+package com.bestappintheworld.commons
 
 import java.text.Normalizer
+import kotlin.text.iterator
 
 object StringUtils {
     enum class KeyboardCommands(val value: String) {

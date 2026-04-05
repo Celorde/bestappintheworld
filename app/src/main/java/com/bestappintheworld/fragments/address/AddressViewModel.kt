@@ -1,4 +1,4 @@
-package com.example.bestappintheworld.fragments.address
+package com.bestappintheworld.fragments.address
 
 import android.graphics.Bitmap
 import android.graphics.Matrix
@@ -7,9 +7,9 @@ import android.os.Looper
 import android.view.MotionEvent
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.bestappintheworld.commons.BrazilUtils.BrazilianMapInteraction
-import com.example.bestappintheworld.commons.BrazilUtils.BrazilianStates
-import com.example.bestappintheworld.commons.Utils
+import com.bestappintheworld.commons.BrazilUtils.BrazilianMapInteraction
+import com.bestappintheworld.commons.BrazilUtils.BrazilianStates
+import com.bestappintheworld.commons.Utils
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -42,13 +42,13 @@ class AddressViewModel : ViewModel() {
         var rouletteNumberDelay = 1000L
         val delayReductionRatio = 0.9
         val handler = Handler(Looper.getMainLooper())
-        var addressCodeCharacters: MutableList<Char> = Utils.addressCodeCharacters.toMutableList()
+        val addressCodeCharacters: MutableList<Char> = Utils.addressCodeCharacters.toMutableList()
 
         val loopRunnable = object : Runnable {
             override fun run() {
                 if (!addressCodeHasClickedOk) {
                     val currentValue = uiState.value.zipCode
-                    var text = ""
+                    var text: String
                     index++
 
                     if (index <= 11) {
@@ -135,6 +135,5 @@ class AddressViewModel : ViewModel() {
                 }
             }
         }
-        true
     }
 }

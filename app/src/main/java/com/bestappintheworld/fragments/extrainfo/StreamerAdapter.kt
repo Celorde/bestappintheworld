@@ -1,4 +1,4 @@
-package com.example.bestappintheworld.fragments.extrainfo
+package com.bestappintheworld.fragments.extrainfo
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bestappintheworld.R
-import com.example.bestappintheworld.commons.Utils
-import com.example.bestappintheworld.components.OnItemClickListener
+import com.bestappintheworld.commons.Utils
+import com.bestappintheworld.components.OnItemClickListener
 
 class StreamerAdapter (private val listener: OnItemClickListener) :
     RecyclerView.Adapter<StreamerAdapter.WordViewHolder>() {

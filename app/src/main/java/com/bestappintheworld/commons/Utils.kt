@@ -1,4 +1,4 @@
-package com.example.bestappintheworld.commons
+package com.bestappintheworld.commons
 
 import android.graphics.Color
 import com.bestappintheworld.R
@@ -43,7 +43,7 @@ object Utils {
         R.drawable.dice_12
     )
 
-    val plateList = mapOf<Int, String>(
+    val plateList = mapOf(
         R.drawable.plate_1 to "Pratinho de aniversário",
         R.drawable.plate_2 to "Prato de microondas",
         R.drawable.plate_3 to "Prato de bateria",

@@ -1,11 +1,13 @@
-package com.example.bestappintheworld
+package com.bestappintheworld
 
+import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
 import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.SpannableString
 import android.text.Spanned
+import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
@@ -15,19 +17,18 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.bestappintheworld.R
 import com.bestappintheworld.databinding.ActivityMainBinding
 import com.bestappintheworld.databinding.DialogAcceptTermsOfUseBinding
 import com.bestappintheworld.databinding.DialogTermsOfUseBinding
 import com.bestappintheworld.databinding.DialogValidateTermsOfUseBinding
 import com.bestappintheworld.fragments.security.CaptchaFragment
-import com.example.bestappintheworld.commons.showToast
-import com.example.bestappintheworld.components.OnVolumeKeyPressed
-import com.example.bestappintheworld.fragments.address.AddressFragment
-import com.example.bestappintheworld.fragments.contact.ContactFragment
-import com.example.bestappintheworld.fragments.extrainfo.ExtraInfoFragment
-import com.example.bestappintheworld.fragments.password.PasswordFragment
-import com.example.bestappintheworld.fragments.personal.PersonalDataFragment
+import com.bestappintheworld.commons.showToast
+import com.bestappintheworld.components.OnVolumeKeyPressed
+import com.bestappintheworld.fragments.address.AddressFragment
+import com.bestappintheworld.fragments.contact.ContactFragment
+import com.bestappintheworld.fragments.extrainfo.ExtraInfoFragment
+import com.bestappintheworld.fragments.password.PasswordFragment
+import com.bestappintheworld.fragments.personal.PersonalDataFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
     private var volumeKeyListener: OnVolumeKeyPressed? = null
     private lateinit var acceptTermsOfUseDialog: AlertDialog
 
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -49,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.apply {
             nextButton.setOnClickListener {
-                val currentFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView);
+                val currentFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView)
 
                 when(currentFragment) {
                     is PersonalDataFragment -> goToNextFragment(ContactFragment())
@@ -115,18 +117,18 @@ class MainActivity : AppCompatActivity() {
                         .setTitle(getString(R.string.terms_of_use_title))
                         .setView(newDialogView.root)
                         .setPositiveButton("Não", null)
-                        .setNegativeButton("Sim", { _, _ ->
+                        .setNegativeButton("Sim") { _, _ ->
                             if (wasReadTimeEnough) {
                                 dialogView.acceptTermsCheckBox.isEnabled = true
                             } else {
                                 showToast("Não deu tempo de ler tudo, apressadinho. Leia novamente.")
                             }
-                        })
+                        }
                         .create()
                     termsOfUseDialog.show()
                 }
 
-                override fun updateDrawState(ds: android.text.TextPaint) {
+                override fun updateDrawState(ds: TextPaint) {
                     ds.isUnderlineText = false
                 }
             }

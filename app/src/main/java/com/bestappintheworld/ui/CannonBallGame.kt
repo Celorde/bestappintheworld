@@ -1,4 +1,4 @@
-package com.example.bestappintheworld.ui
+package com.bestappintheworld.ui
 
 import android.annotation.SuppressLint
 import android.content.Context

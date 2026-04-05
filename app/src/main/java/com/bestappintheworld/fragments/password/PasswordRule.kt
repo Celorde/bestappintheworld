@@ -1,4 +1,4 @@
-package com.example.bestappintheworld.fragments.password
+package com.bestappintheworld.fragments.password
 
 
 data class PasswordRule(
