@@ -14,9 +14,9 @@ import android.text.style.ForegroundColorSpan
 import android.text.style.UnderlineSpan
 import android.view.KeyEvent
 import android.view.View
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.bestappintheworld.components.CustomDialog
 import com.bestappintheworld.databinding.ActivityMainBinding
 import com.bestappintheworld.databinding.DialogAcceptTermsOfUseBinding
 import com.bestappintheworld.databinding.DialogTermsOfUseBinding
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private var volumeKeyListener: OnVolumeKeyPressed? = null
-    private lateinit var acceptTermsOfUseDialog: AlertDialog
+    private var acceptTermsOfUseDialog: CustomDialog? = null
 
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -113,19 +113,18 @@ class MainActivity : AppCompatActivity() {
                         }
                     }.start()
 
-                    val termsOfUseDialog = AlertDialog.Builder(this@MainActivity)
+                    CustomDialog.Builder(this@MainActivity)
                         .setTitle(getString(R.string.terms_of_use_title))
                         .setView(newDialogView.root)
-                        .setPositiveButton("Não", null)
-                        .setNegativeButton("Sim") { _, _ ->
+                        .setPositiveButton("Não") { }
+                        .setNegativeButton("Sim") {
                             if (wasReadTimeEnough) {
                                 dialogView.acceptTermsCheckBox.isEnabled = true
                             } else {
                                 showToast("Não deu tempo de ler tudo, apressadinho. Leia novamente.")
                             }
                         }
-                        .create()
-                    termsOfUseDialog.show()
+                        .show()
                 }
 
                 override fun updateDrawState(ds: TextPaint) {
@@ -170,32 +169,29 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        acceptTermsOfUseDialog = AlertDialog.Builder(this)
+        acceptTermsOfUseDialog = CustomDialog.Builder(this)
             .setTitle(getString(R.string.terms_of_use_title))
             .setView(dialogView.root)
-            .setPositiveButton(getString(R.string.ok_button)) { _, _ ->
+            .setPositiveButton(getString(R.string.ok_button)) {
                 if (dialogView.acceptTermsCheckBox.isChecked) {
                     showToast("Você não aceitou os Termos. Por segurança, releia e aceite.")
                 } else {
                     val validateTermsView = DialogValidateTermsOfUseBinding.inflate(layoutInflater)
-                    val validateTermsDialog = AlertDialog.Builder(this@MainActivity)
+                    CustomDialog.Builder(this@MainActivity)
                         .setTitle(getString(R.string.validate_terms_of_use))
                         .setView(validateTermsView.root)
-                        .setPositiveButton("Sim", ({ _, _ ->
+                        .setPositiveButton("Sim") {
                             if (validateTermsView.validateTermsEditText.text.toString() == "1 cebola média picada") {
                                 goToNextFragment(CaptchaFragment())
                             } else {
                                 showToast("Ingrediente errado. Por segurança, releia e tente novamente.")
                             }
-                        }))
-                        .setNegativeButton("Não", null)
-                        .create()
-                    validateTermsDialog.show()
+                        }
+                        .setNegativeButton("Não") { }
+                        .show()
                 }
             }
-            .setNegativeButton(getString(R.string.cancel_button)) { _, _ -> }
-            .create()
-
-        acceptTermsOfUseDialog.show()
+            .setNegativeButton(getString(R.string.cancel_button)) { }
+            .show()
     }
 }

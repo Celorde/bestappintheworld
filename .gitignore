@@ -17,3 +17,4 @@ local.properties
 gradlew
 gradle/wrapper
 gradlew.bat
+.kotlin/
