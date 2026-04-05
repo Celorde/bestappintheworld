@@ -1,5 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.BestAppInTheWorld" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_variant</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorSecondaryVariant">@color/secondary</item>
+        <item name="colorOnSecondary">@color/on_secondary</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/background</item>
+        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@color/background</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/on_surface</item>
+        <item name="android:textColorPrimary">@color/on_background</item>
+        <item name="android:textColorSecondary">@color/on_background</item>
+        <item name="android:editTextColor">@color/on_background</item>
+        <item name="android:textColorHint">@color/on_background</item>
+        <item name="android:textViewStyle">@style/Widget.BestAppInTheWorld.TextView</item>
+        <item name="editTextStyle">@style/Widget.BestAppInTheWorld.EditText</item>
+    </style>
 
-    <style name="Theme.BestUIInTheWorld" parent="Theme.AppCompat.NoActionBar" />
+    <style name="Widget.BestAppInTheWorld.TextView" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/on_background</item>
+    </style>
+
+    <style name="Widget.BestAppInTheWorld.EditText" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/on_background</item>
+        <item name="android:textColorHint">#80FFFFFF</item>
+    </style>
+
+    <style name="Widget.BestAppInTheWorld.Button" parent="Widget.MaterialComponents.Button">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.BestAppInTheWorld.Button</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+
+    <style name="ThemeOverlay.BestAppInTheWorld.Button" parent="">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+    </style>
+
+    <style name="Widget.BestAppInTheWorld.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/surface</item>
+        <item name="cardCornerRadius">12dp</item>
+        <item name="cardElevation">4dp</item>
+    </style>
 </resources>

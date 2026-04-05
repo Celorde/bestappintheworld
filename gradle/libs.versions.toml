@@ -1,5 +1,5 @@
 [versions]
-agp = "8.9.1"
+agp = "8.13.0"
 gdxVersion = "1.12.0"
 koin = "3.5.3"
 kotlin = "2.0.21"
@@ -11,6 +11,7 @@ lifecycleRuntimeKtx = "2.6.1"
 constraintlayout = "2.2.1"
 appcompat = "1.7.0"
 recyclerview = "1.4.0"
+material = "1.12.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -27,6 +28,7 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
+google-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

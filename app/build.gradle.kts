@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.bestuiintheworld"
-    compileSdk = 35
+    namespace = "com.bestappintheworld"
+    compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.bestuiintheworld"
+        applicationId = "com.bestappintheworld"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
@@ -45,6 +45,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.appcompat)
+    implementation(libs.google.material)
     implementation(libs.koin.core)
     implementation(libs.koin.android)
     implementation(libs.androidx.recyclerview)

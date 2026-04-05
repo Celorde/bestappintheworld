@@ -1,0 +1,74 @@
+<!-- res/layout/activity_avatar.xml -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
+
+    <!-- Área do Avatar -->
+    <FrameLayout
+        android:id="@+id/frameAvatar"
+        android:layout_width="250dp"
+        android:layout_height="350dp"
+        android:layout_marginTop="16dp"
+        android:background="#C0C0C0">
+
+        <!-- Base do Avatar -->
+        <ImageView
+            android:id="@+id/imgAvatarBase"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/avatar_jerry" />
+
+        <!-- Itens sobrepostos -->
+        <ImageView
+            android:id="@+id/imgCasaco"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter" />
+
+        <ImageView
+            android:id="@+id/imgBarba"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter" />
+
+        <ImageView
+            android:id="@+id/imgOculos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter" />
+
+        <ImageView
+            android:id="@+id/imgChapeu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter" />
+
+        <ImageView
+            android:id="@+id/imgAcessorio"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter" />
+    </FrameLayout>
+
+    <!-- Barra de Itens -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:background="#C0C0C0">
+
+        <LinearLayout
+            android:id="@+id/layoutItens"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="8dp">
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</LinearLayout>

@@ -11,12 +11,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BestUIInTheWorld"
+        android:theme="@style/Theme.BestAppInTheWorld"
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.BestUIInTheWorld"
+            android:theme="@style/Theme.BestAppInTheWorld"
             android:screenOrientation="landscape"
             android:configChanges="keyboardHidden|orientation|screenSize">
             <intent-filter>
@@ -26,7 +26,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".DiceApp" android:exported="true" />
+        <activity android:name="com.example.bestappintheworld.DiceApp" android:exported="true" />
+
+        <activity android:name=".ui.TermoGame" android:exported="true" />
     </application>
 
 </manifest>
