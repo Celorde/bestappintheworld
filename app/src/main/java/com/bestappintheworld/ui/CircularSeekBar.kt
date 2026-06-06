@@ -8,6 +8,8 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import androidx.core.graphics.toColorInt
+import com.bestappintheworld.R
 import kotlin.math.atan2
 import kotlin.math.cos
 import kotlin.math.min
@@ -33,7 +35,7 @@ class CircularSeekBar @JvmOverloads constructor(
     }
 
     private val pointerPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = Color.BLUE
+        color = context.getColor(R.color.primary)
         style = Paint.Style.FILL
     }
 

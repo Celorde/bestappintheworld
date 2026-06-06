@@ -2,12 +2,16 @@ package com.bestappintheworld.components
 
 import android.app.Dialog
 import android.content.Context
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.Window
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import android.widget.RadioButton
+import android.widget.TextView
 import androidx.core.view.isVisible
 import com.bestappintheworld.databinding.LayoutCustomDialogBinding
 
@@ -53,7 +57,13 @@ class CustomDialog(context: Context) : Dialog(context) {
 
             items?.let { itemList ->
                 val listView = ListView(context)
-                listView.adapter = ArrayAdapter(context, android.R.layout.simple_list_item_1, itemList)
+                listView.adapter = object : ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, itemList) {
+                    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                        val view = super.getView(position, convertView, parent) as TextView
+                        view.setTextColor(context.getColor(android.R.color.white))
+                        return view
+                    }
+                }
                 listView.setOnItemClickListener { _, _, position, _ ->
                     onItemClickListener?.invoke(position)
                     dismiss()
@@ -63,6 +73,7 @@ class CustomDialog(context: Context) : Dialog(context) {
             }
 
             customView?.let {
+                applyWhiteToRadioButtons(it)
                 customViewContainer.addView(it)
                 customViewContainer.isVisible = true
             }
@@ -86,6 +97,17 @@ class CustomDialog(context: Context) : Dialog(context) {
             }
             
             buttonContainer.isVisible = positiveButton.isVisible || negativeButton.isVisible
+        }
+    }
+
+    private fun applyWhiteToRadioButtons(view: View) {
+        if (view is RadioButton) {
+            view.setTextColor(context.getColor(android.R.color.white))
+            view.buttonTintList = ColorStateList.valueOf(context.getColor(android.R.color.white))
+        } else if (view is ViewGroup) {
+            for (i in 0 until view.childCount) {
+                applyWhiteToRadioButtons(view.getChildAt(i))
+            }
         }
     }
 
