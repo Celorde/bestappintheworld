@@ -28,6 +28,7 @@ import com.bestappintheworld.databinding.DialogSelectCityBinding
 import com.bestappintheworld.databinding.DialogStateInputBinding
 import com.bestappintheworld.databinding.FragmentAddressBinding
 import com.bestappintheworld.ui.T9Keyboard
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.Locale
@@ -238,7 +239,7 @@ class AddressFragment : Fragment() {
 
         startT9Keyboard(dialogView)
 
-        val insertStreetNameDialog = AlertDialog.Builder(requireContext())
+        val insertStreetNameDialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.insert_address))
             .setView(dialogView.root)
             .setPositiveButton(getString(R.string.ok_button)) { _, _ ->
@@ -267,7 +268,7 @@ class AddressFragment : Fragment() {
             }
         }
 
-        val insertStateDialog = AlertDialog.Builder(requireContext())
+        val insertStateDialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.insert_state))
             .setView(stateBinding?.root)
             .setPositiveButton(getString(R.string.ok_button)) { _, _ ->
@@ -308,7 +309,7 @@ class AddressFragment : Fragment() {
             }
         }
 
-        insertCityDialog = AlertDialog.Builder(requireContext())
+        insertCityDialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.insert_city))
             .setView(dialogView.root)
             .setPositiveButton(getString(R.string.ok_button)) { _, _ -> }
@@ -332,7 +333,7 @@ class AddressFragment : Fragment() {
             }
         }
 
-        val insertNumberDialog = AlertDialog.Builder(requireContext())
+        val insertNumberDialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.insert_number))
             .setView(dialogView.root)
             .setPositiveButton(getString(R.string.ok_button)) { _, _ ->
@@ -357,7 +358,7 @@ class AddressFragment : Fragment() {
             selectedPlace
         )
 
-        val insertReferencePointDialog = AlertDialog.Builder(requireContext())
+        val insertReferencePointDialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.insert_reference_point))
             .setView(dialogView.root)
             .setPositiveButton("Sim", null)

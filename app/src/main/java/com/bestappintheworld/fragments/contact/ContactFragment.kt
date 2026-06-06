@@ -15,6 +15,7 @@ import com.bestappintheworld.commons.showToast
 import com.bestappintheworld.databinding.DialogEmailInputBinding
 import com.bestappintheworld.databinding.DialogPhoneInputBinding
 import com.bestappintheworld.databinding.FragmentContactBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -124,7 +125,7 @@ class ContactFragment : Fragment() {
 
         val dialogView = DialogEmailInputBinding.inflate(layoutInflater)
 
-        val addRemoveDialog = AlertDialog.Builder(requireContext())
+        val addRemoveDialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.insert_email_add_or_remove_title))
             .setView(dialogView.root)
             .setPositiveButton("Adicionar") { _, _ ->
@@ -149,7 +150,7 @@ class ContactFragment : Fragment() {
         emailInputBinding = DialogEmailInputBinding.inflate(layoutInflater)
         viewModel.initializeEmailCharList()
         viewModel.updateGeneratedChar()
-        emailLetterDialog = AlertDialog.Builder(requireContext())
+        emailLetterDialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.insert_email_dialog_title))
             .setView(emailInputBinding?.root)
             .setCancelable(false)
@@ -199,7 +200,7 @@ class ContactFragment : Fragment() {
             }
         }
 
-        val insertPhoneDialog = AlertDialog.Builder(requireContext())
+        val insertPhoneDialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.insert_phone))
             .setView(phoneInputBinding?.root)
             .setPositiveButton(getString(R.string.ok_button)) { _, _ ->

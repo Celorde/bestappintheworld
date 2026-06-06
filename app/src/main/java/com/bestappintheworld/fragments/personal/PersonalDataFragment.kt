@@ -12,7 +12,6 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.core.view.children
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
@@ -26,6 +25,7 @@ import com.bestappintheworld.commons.hideKeyboard
 import com.bestappintheworld.commons.openUrl
 import com.bestappintheworld.commons.showKeyboard
 import com.bestappintheworld.commons.showToast
+import com.bestappintheworld.components.CustomDialog
 import com.bestappintheworld.components.OnVolumeKeyPressed
 import com.bestappintheworld.databinding.DialogBirthdateInputBinding
 import com.bestappintheworld.databinding.DialogProfessionInputBinding
@@ -54,7 +54,7 @@ class PersonalDataFragment : Fragment(), OnVolumeKeyPressed {
     private val delayMillis = 1000L
     private var shouldConfirmLetter = false
 
-    private lateinit var schoolDegreeInputDialog: AlertDialog
+    private var schoolDegreeInputDialog: CustomDialog? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -235,24 +235,24 @@ class PersonalDataFragment : Fragment(), OnVolumeKeyPressed {
     private fun showNameLetterInputDialog() {
         val shuffledLetters = Utils.letters.shuffled()
 
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle(getString(R.string.insert_name_dialog_title))
-        builder.setItems(shuffledLetters.toTypedArray()) { _, index ->
-            viewModel.parseSelectedNameLetter(shuffledLetters, index)
-        }
-        builder.show()
+        CustomDialog.Builder(requireContext())
+            .setTitle(getString(R.string.insert_name_dialog_title))
+            .setItems(shuffledLetters.toTypedArray()) { index ->
+                viewModel.parseSelectedNameLetter(shuffledLetters, index)
+            }
+            .show()
     }
 
     private fun showBirthdateInputDialog(editText: EditText) {
         val dialogView = DialogBirthdateInputBinding.inflate(layoutInflater)
-        val birthdateInputDialog = AlertDialog.Builder(requireContext())
+        val birthdateInputDialog = CustomDialog.Builder(requireContext())
             .setTitle(getString(R.string.insert_birthdate))
             .setView(dialogView.root)
-            .setPositiveButton(getString(R.string.ok_button)) { _, _ ->
+            .setPositiveButton(getString(R.string.ok_button)) {
                 editText.setText(dialogView.insertBirthdateTextView.text)
             }
-            .setNegativeButton(getString(R.string.cancel_button)) { _, _ -> }
-            .create()
+            .setNegativeButton(getString(R.string.cancel_button)) { }
+            .show()
 
         dialogView.birthdateSelectorSeekBar.let {
             //TODO Change to ViewModel
@@ -278,58 +278,50 @@ class PersonalDataFragment : Fragment(), OnVolumeKeyPressed {
                 }
             }
         }
-
-        birthdateInputDialog.show()
     }
 
     private fun showSchoolDegreeInputDialog() {
         val dialogView = DialogSchoolDegreeInputBinding.inflate(layoutInflater)
-        schoolDegreeInputDialog = AlertDialog.Builder(requireContext())
+        schoolDegreeInputDialog = CustomDialog.Builder(requireContext())
             .setTitle(getString(R.string.insert_school_degree))
             .setView(dialogView.root)
-            .setPositiveButton(getString(R.string.ok_button)) { _, _ ->
+            .setPositiveButton(getString(R.string.ok_button)) {
                 val radioButtonId = dialogView.radioGroup.checkedRadioButtonId
                 val selectedRadioButton =
                     dialogView.radioGroup.children.find { it.id == radioButtonId } as RadioButton
 
                 val newDialogView = DialogSchoolDegreeTermoBinding.inflate(layoutInflater)
-                val termoDialog = AlertDialog.Builder(requireContext())
+                CustomDialog.Builder(requireContext())
                     .setTitle(getString(R.string.termo_title, selectedRadioButton.text))
                     .setView(newDialogView.root)
-                    .setPositiveButton("Sim", null)
-                    .setNegativeButton("Não", null)
-                    .create()
+                    .setPositiveButton("Sim") { }
+                    .setNegativeButton("Não") { }
+                    .show()
 
                 newDialogView.termoGame.setData(
                     editText = binding.insertSchoolDegreeEditText,
                     schoolDegree = SchoolDegree.getDegreeByValue(
                         value = selectedRadioButton.text.toString()
                     ), {
-                        schoolDegreeInputDialog.dismiss()
+                        schoolDegreeInputDialog?.dismiss()
                     }
                 )
-
-                termoDialog.show()
             }
-            .setNegativeButton(getString(R.string.cancel_button)) { _, _ -> }
-            .create()
-
-        schoolDegreeInputDialog.show()
+            .setNegativeButton(getString(R.string.cancel_button)) { }
+            .show()
     }
 
     private fun showProfessionInputDialog() {
         val dialogView = DialogProfessionInputBinding.inflate(layoutInflater)
-        schoolDegreeInputDialog = AlertDialog.Builder(requireContext())
+        CustomDialog.Builder(requireContext())
             .setTitle(getString(R.string.create_profession_avatar_title))
             .setView(dialogView.root)
-            .setPositiveButton(getString(R.string.ok_button)) { _, _ ->
+            .setPositiveButton(getString(R.string.ok_button)) {
                 val selectedProfession = dialogView.avatarGame.parseSelectedProfession()
                 binding.insertProfessionEditText.setText(selectedProfession)
             }
-            .setNegativeButton(getString(R.string.cancel_button)) { _, _ -> }
-            .create()
-
-        schoolDegreeInputDialog.show()
+            .setNegativeButton(getString(R.string.cancel_button)) { }
+            .show()
     }
 
     private fun setDateToField(textView: TextView, dayOfYear: Int, year: Int) {

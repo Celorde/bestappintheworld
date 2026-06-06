@@ -22,6 +22,36 @@
         <item name="android:textColorHint">@color/on_background</item>
         <item name="android:textViewStyle">@style/Widget.BestAppInTheWorld.TextView</item>
         <item name="editTextStyle">@style/Widget.BestAppInTheWorld.EditText</item>
+
+        <!-- Material Dialog Theme -->
+        <item name="materialAlertDialogTheme">@style/Theme.BestAppInTheWorld.Dialog</item>
+    </style>
+
+    <style name="Theme.BestAppInTheWorld.Dialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <!-- Dialog Background and Colors -->
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/on_surface</item>
+        <item name="colorPrimary">@color/primary</item>
+        <!-- Title Text Style -->
+        <item name="materialAlertDialogTitleTextStyle">@style/Theme.BestAppInTheWorld.Dialog.Title.Text</item>
+        <!-- Body Text Style -->
+        <item name="materialAlertDialogBodyTextStyle">@style/Theme.BestAppInTheWorld.Dialog.Body.Text</item>
+        <!-- Buttons Style -->
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.BestAppInTheWorld.Button.TextButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.BestAppInTheWorld.Button.TextButton</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Widget.BestAppInTheWorld.Button.TextButton</item>
+    </style>
+
+    <style name="Theme.BestAppInTheWorld.Dialog.Title.Text" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
+        <item name="android:textColor">@color/primary</item>
+    </style>
+
+    <style name="Theme.BestAppInTheWorld.Dialog.Body.Text" parent="MaterialAlertDialog.MaterialComponents.Body.Text">
+        <item name="android:textColor">@color/on_surface</item>
+    </style>
+
+    <style name="Widget.BestAppInTheWorld.Button.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/primary</item>
     </style>
 
     <style name="Widget.BestAppInTheWorld.TextView" parent="Widget.AppCompat.TextView">

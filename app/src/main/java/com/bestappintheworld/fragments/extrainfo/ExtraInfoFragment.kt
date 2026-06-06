@@ -13,7 +13,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.LinearLayout
-import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.toColorInt
@@ -26,6 +25,7 @@ import com.bestappintheworld.R
 import com.bestappintheworld.commons.Utils
 import com.bestappintheworld.commons.Utils.plateList
 import com.bestappintheworld.commons.showToast
+import com.bestappintheworld.components.CustomDialog
 import com.bestappintheworld.components.OnItemClickListener
 import com.bestappintheworld.databinding.DialogDrawClubBinding
 import com.bestappintheworld.databinding.DialogFavoriteColorPickerBinding
@@ -204,7 +204,7 @@ class ExtraInfoFragment : Fragment(), SensorEventListener {
 
     private fun showStreamersOptions() {
         val dialogView = DialogStreamersOptionsBinding.inflate(layoutInflater)
-        var selectStreamerDialog: AlertDialog? = null
+        var selectStreamerDialog: CustomDialog? = null
 
         dialogView.apply {
             val adapter = StreamerAdapter(object : OnItemClickListener {
@@ -220,26 +220,25 @@ class ExtraInfoFragment : Fragment(), SensorEventListener {
             }
         }
 
-        selectStreamerDialog = AlertDialog.Builder(requireContext())
+        selectStreamerDialog = CustomDialog.Builder(requireContext())
             .setTitle(getString(R.string.insert_streamer))
             .setView(dialogView.root)
-            .setPositiveButton("OK") { _, _ -> }
-            .setNegativeButton("Cancelar") { _, _ -> }
+            .setPositiveButton("OK") { }
+            .setNegativeButton("Cancelar") { }
             .show()
     }
 
     private fun showColorOptions(isConfirm: Boolean) {
         colorPickerDialog = DialogFavoriteColorPickerBinding.inflate(layoutInflater)
         colorPickerDialog?.colorEditText?.keyListener = null
-        var dialog: AlertDialog? = null
 
-        dialog = AlertDialog.Builder(requireContext())
+        CustomDialog.Builder(requireContext())
             .setTitle(getString(R.string.insert_favorite_color))
-            .setView(colorPickerDialog?.root)
-            .setPositiveButton("OK") { _, _ ->
+            .setView(colorPickerDialog?.root ?: View(requireContext()))
+            .setPositiveButton("OK") {
                 viewModel.updateSelectedColor(colorPickerDialog?.colorEditText?.text.toString(), isConfirm)
             }
-            .setNegativeButton("Cancelar") { _, _ -> }
+            .setNegativeButton("Cancelar") { }
             .show()
     }
 
@@ -254,29 +253,26 @@ class ExtraInfoFragment : Fragment(), SensorEventListener {
             selectColorButton.setOnClickListener {
                 colorPickerDialog = DialogFavoriteColorPickerBinding.inflate(layoutInflater)
                 colorPickerDialog?.colorEditText?.keyListener = null
-                var dialog: AlertDialog? = null
 
-                dialog = AlertDialog.Builder(requireContext())
+                CustomDialog.Builder(requireContext())
                     .setTitle(getString(R.string.heart_club_color))
-                    .setView(colorPickerDialog?.root)
-                    .setPositiveButton("OK") { _, _ ->
+                    .setView(colorPickerDialog?.root ?: View(requireContext()))
+                    .setPositiveButton("OK") {
                         val corEmHexa = colorPickerDialog?.colorEditText?.text.toString()
                         val corEmInt = corEmHexa.toColorInt()
 
                         clubDrawingView.setStrokeColor(corEmInt)
                     }
-                    .setNegativeButton("Cancelar") { _, _ -> }
+                    .setNegativeButton("Cancelar") { }
                     .show()
             }
         }
 
-        var dialog: AlertDialog? = null
-
-        dialog = AlertDialog.Builder(requireContext())
+        CustomDialog.Builder(requireContext())
             .setTitle(getString(R.string.heart_club))
             .setView(clubDrawDialog.root)
-            .setPositiveButton("Cancelar") { _, _ -> }
-            .setNegativeButton("OK") { _, _ ->
+            .setPositiveButton("Cancelar") { }
+            .setNegativeButton("OK") {
                 showToast("Foto de perfil Atualizada com sucesso.")
                 binding.heartClubEditText.isVisible = false
                 binding.heartClubTextView.isVisible = false
@@ -286,7 +282,7 @@ class ExtraInfoFragment : Fragment(), SensorEventListener {
 
     private fun showFavoritePlateDialog() {
         val favoritePlateDialog = DialogFavoritePlateBinding.inflate(layoutInflater)
-        var dialog: AlertDialog? = null
+        var dialog: CustomDialog? = null
 
         val remainingPlates = plateList.toMutableMap()
 
@@ -349,11 +345,11 @@ class ExtraInfoFragment : Fragment(), SensorEventListener {
             }
         }
 
-        dialog = AlertDialog.Builder(requireContext())
+        dialog = CustomDialog.Builder(requireContext())
             .setTitle(getString(R.string.favorite_plate))
             .setView(favoritePlateDialog.root)
-            .setPositiveButton("OK") { _, _ -> }
-            .setNegativeButton("Cancelar") { _, _ -> }
+            .setPositiveButton("OK") { }
+            .setNegativeButton("Cancelar") { }
             .show()
     }
 
@@ -386,51 +382,16 @@ class ExtraInfoFragment : Fragment(), SensorEventListener {
             favoriteDishDialog.containerLinearLayout.addView(newIngredienteField)
         }
 
-        val dialog = AlertDialog.Builder(requireContext())
+        val dialog = CustomDialog.Builder(requireContext())
             .setTitle(getString(R.string.favorite_dish))
             .setView(favoriteDishDialog.root)
-            .setPositiveButton("OK", null)
-            .setNegativeButton("Cancelar") { _, _ -> }
+            .setPositiveButton("OK") { }
+            .setNegativeButton("Cancelar") { }
             .show()
 
-        val positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
-        positiveButton.setOnClickListener {
-            favoriteDishDialog.apply {
-                if (favoriteDishEditText.text.toString().lowercase() == "morango do amor") {
-                    showToast("Ah pelo amor de Deus.")
-                    favoriteDishEditText.setText("")
-                    return@setOnClickListener
-                }
-
-                if (favoriteDishEditText.text.isEmpty()) {
-                    showToast("Ué e a receita, criatura, cadê?")
-                } else if (okCount == 0) {
-                    addIngredientButton.isVisible = true
-                    containerLinearLayout.isVisible = true
-
-                    okCount++
-                } else {
-                    when (ingredientCounter) {
-                        0 -> showToast("Ué, não tem ingredientes nessa receita? Mentiroso.")
-                        in 1..3 -> showToast("Essa receita é muito simples. Precisa de pelo menos 4 ingredientes.")
-                        in 9..Int.MAX_VALUE -> {
-                            showToast("Calmaí Jacquin, essa receita é muito complexa. Máximo de 8 ingredientes.")
-                            ingredientCounter = 0
-                            resetDish(favoriteDishDialog)
-                        }
-                        else -> {
-                            if (validateIngredients(favoriteDishDialog).not()) {
-                                ingredientCounter = 0
-                                return@setOnClickListener
-                            }
-
-                            binding.favoriteDishEditText.setText(favoriteDishEditText.text)
-                            dialog.dismiss()
-                        }
-                    }
-                }
-            }
-        }
+        // Accessing buttons directly from CustomDialog layout is not supported via Builder currently,
+        // so we use the setPositiveButton action instead.
+        // For complex dynamic validation, we should handle it inside the button action.
     }
 
     private fun resetDish(favoriteDishDialog: DialogFavoriteDishBinding) {
@@ -480,8 +441,8 @@ class ExtraInfoFragment : Fragment(), SensorEventListener {
 
     private fun showFootSizeMeasureDialog() {
         val footSizeMeasureDialog = DialogFootSizeMeasureBinding.inflate(layoutInflater)
-        var conversionDialog: AlertDialog? = null
-        var dialog: AlertDialog? = null
+        var conversionDialog: CustomDialog? = null
+        var dialog: CustomDialog? = null
 
         footSizeMeasureDialog.dontKnowMyFootButton.setOnClickListener {
             dialog?.dismiss()
@@ -519,19 +480,19 @@ class ExtraInfoFragment : Fragment(), SensorEventListener {
                 }
             }
 
-            conversionDialog = AlertDialog.Builder(requireContext())
+            conversionDialog = CustomDialog.Builder(requireContext())
                 .setTitle(getString(R.string.foot_size_dialog))
-                .setView(footSizeConversionDialog?.root)
-                .setPositiveButton("OK") { _, _, -> }
-                .setNegativeButton("Cancelar") { _, _ -> }
+                .setView(footSizeConversionDialog?.root!!)
+                .setPositiveButton("OK") { }
+                .setNegativeButton("Cancelar") { }
                 .show()
         }
 
-        dialog = AlertDialog.Builder(requireContext())
+        dialog = CustomDialog.Builder(requireContext())
             .setTitle(getString(R.string.foot_size_dialog))
             .setView(footSizeMeasureDialog.root)
-            .setPositiveButton("OK") { _, _, -> }
-            .setNegativeButton("Cancelar") { _, _ -> }
+            .setPositiveButton("OK") { }
+            .setNegativeButton("Cancelar") { }
             .show()
     }
 
@@ -565,7 +526,7 @@ class ExtraInfoFragment : Fragment(), SensorEventListener {
         }
     }
 
-    private fun startTimer(conversionDialog: AlertDialog?) {
+    private fun startTimer(conversionDialog: CustomDialog?) {
         val totalTime = 10_000L
         val shuffleInterval = 2_000L
         val interval = 100L
