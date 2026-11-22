@@ -6,65 +6,51 @@
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/primary_variant</item>
         <item name="colorOnPrimary">@color/on_primary</item>
+
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/secondary</item>
-        <item name="colorSecondaryVariant">@color/secondary</item>
+        <item name="colorSecondaryVariant">@color/secondary_variant</item>
         <item name="colorOnSecondary">@color/on_secondary</item>
-        <!-- Status bar color. -->
+
+        <!-- Status bar and Window color. -->
         <item name="android:statusBarColor">@color/background</item>
-        <!-- Customize your theme here. -->
         <item name="android:windowBackground">@color/background</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+
+        <!-- Surfaces -->
         <item name="colorSurface">@color/surface</item>
         <item name="colorOnSurface">@color/on_surface</item>
+
+        <!-- Typography & Text Appearance -->
         <item name="android:textColorPrimary">@color/on_background</item>
         <item name="android:textColorSecondary">@color/on_background</item>
         <item name="android:editTextColor">@color/on_background</item>
-        <item name="android:textColorHint">@color/on_background</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+
         <item name="android:textViewStyle">@style/Widget.BestAppInTheWorld.TextView</item>
         <item name="editTextStyle">@style/Widget.BestAppInTheWorld.EditText</item>
-
-        <!-- Material Dialog Theme -->
-        <item name="materialAlertDialogTheme">@style/Theme.BestAppInTheWorld.Dialog</item>
+        <item name="materialButtonStyle">@style/Widget.BestAppInTheWorld.Button</item>
     </style>
 
-    <style name="Theme.BestAppInTheWorld.Dialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
-        <!-- Dialog Background and Colors -->
-        <item name="colorSurface">@color/surface</item>
-        <item name="colorOnSurface">@color/on_surface</item>
-        <item name="colorPrimary">@color/primary</item>
-        <!-- Title Text Style -->
-        <item name="materialAlertDialogTitleTextStyle">@style/Theme.BestAppInTheWorld.Dialog.Title.Text</item>
-        <!-- Body Text Style -->
-        <item name="materialAlertDialogBodyTextStyle">@style/Theme.BestAppInTheWorld.Dialog.Body.Text</item>
-        <!-- Buttons Style -->
-        <item name="buttonBarPositiveButtonStyle">@style/Widget.BestAppInTheWorld.Button.TextButton</item>
-        <item name="buttonBarNegativeButtonStyle">@style/Widget.BestAppInTheWorld.Button.TextButton</item>
-        <item name="buttonBarNeutralButtonStyle">@style/Widget.BestAppInTheWorld.Button.TextButton</item>
-    </style>
-
-    <style name="Theme.BestAppInTheWorld.Dialog.Title.Text" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
-        <item name="android:textColor">@color/primary</item>
-    </style>
-
-    <style name="Theme.BestAppInTheWorld.Dialog.Body.Text" parent="MaterialAlertDialog.MaterialComponents.Body.Text">
-        <item name="android:textColor">@color/on_surface</item>
-    </style>
-
-    <style name="Widget.BestAppInTheWorld.Button.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
-        <item name="android:textColor">@color/primary</item>
-    </style>
-
-    <style name="Widget.BestAppInTheWorld.TextView" parent="Widget.AppCompat.TextView">
+    <style name="Widget.BestAppInTheWorld.TextView" parent="Widget.MaterialComponents.TextView">
         <item name="android:textColor">@color/on_background</item>
     </style>
 
     <style name="Widget.BestAppInTheWorld.EditText" parent="Widget.AppCompat.EditText">
         <item name="android:textColor">@color/on_background</item>
-        <item name="android:textColorHint">#80FFFFFF</item>
+        <item name="android:textColorHint">@color/text_hint</item>
     </style>
 
     <style name="Widget.BestAppInTheWorld.Button" parent="Widget.MaterialComponents.Button">
         <item name="materialThemeOverlay">@style/ThemeOverlay.BestAppInTheWorld.Button</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Widget.BestAppInTheWorld.Button.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:textAllCaps">false</item>
         <item name="cornerRadius">8dp</item>
     </style>
 
@@ -75,7 +61,9 @@
 
     <style name="Widget.BestAppInTheWorld.CardView" parent="Widget.MaterialComponents.CardView">
         <item name="cardBackgroundColor">@color/surface</item>
-        <item name="cardCornerRadius">12dp</item>
+        <item name="cardCornerRadius">16dp</item>
         <item name="cardElevation">4dp</item>
+        <item name="strokeColor">@color/card_stroke</item>
+        <item name="strokeWidth">1dp</item>
     </style>
 </resources>
