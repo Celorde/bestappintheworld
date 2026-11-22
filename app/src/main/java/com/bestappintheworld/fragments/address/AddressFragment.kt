@@ -11,7 +11,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -20,6 +19,7 @@ import com.bestappintheworld.R
 import com.bestappintheworld.commons.Utils
 import com.bestappintheworld.commons.hideKeyboard
 import com.bestappintheworld.commons.showToast
+import com.bestappintheworld.components.CustomDialog
 import com.bestappintheworld.components.OnItemClickListener
 import com.bestappintheworld.databinding.DialogAddressInputBinding
 import com.bestappintheworld.databinding.DialogNumberInputBinding
@@ -28,7 +28,6 @@ import com.bestappintheworld.databinding.DialogSelectCityBinding
 import com.bestappintheworld.databinding.DialogStateInputBinding
 import com.bestappintheworld.databinding.FragmentAddressBinding
 import com.bestappintheworld.ui.T9Keyboard
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.Locale
@@ -239,15 +238,14 @@ class AddressFragment : Fragment() {
 
         startT9Keyboard(dialogView)
 
-        val insertStreetNameDialog = MaterialAlertDialogBuilder(requireContext())
+        CustomDialog.Builder(requireContext())
             .setTitle(getString(R.string.insert_address))
             .setView(dialogView.root)
-            .setPositiveButton(getString(R.string.ok_button)) { _, _ ->
+            .setPositiveButton(getString(R.string.ok_button)) {
                 binding.insertStreetEditText.setText(dialogView.addressEditText.text)
             }
-            .setNegativeButton(getString(R.string.cancel_button)) { _, _ -> }
-            .create()
-        insertStreetNameDialog.show()
+            .setNegativeButton(getString(R.string.cancel_button))
+            .show()
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -268,20 +266,19 @@ class AddressFragment : Fragment() {
             }
         }
 
-        val insertStateDialog = MaterialAlertDialogBuilder(requireContext())
+        CustomDialog.Builder(requireContext())
             .setTitle(getString(R.string.insert_state))
-            .setView(stateBinding?.root)
-            .setPositiveButton(getString(R.string.ok_button)) { _, _ ->
+            .setView(stateBinding?.root ?: View(requireContext()))
+            .setPositiveButton(getString(R.string.ok_button)) {
                 binding.insertStateEditText.setText(stateBinding?.stateEditText?.text)
             }
-            .setNegativeButton(getString(R.string.cancel_button)) { _, _ -> }
-            .create()
-        insertStateDialog.show()
+            .setNegativeButton(getString(R.string.cancel_button))
+            .show()
     }
 
     private fun showCitiesDropdown() {
         val dialogView = DialogSelectCityBinding.inflate(layoutInflater)
-        var insertCityDialog: AlertDialog? = null
+        var insertCityDialog: CustomDialog? = null
 
         dialogView.apply {
             val adapter = CityAdapter(object : OnItemClickListener {
@@ -309,11 +306,11 @@ class AddressFragment : Fragment() {
             }
         }
 
-        insertCityDialog = MaterialAlertDialogBuilder(requireContext())
+        insertCityDialog = CustomDialog.Builder(requireContext())
             .setTitle(getString(R.string.insert_city))
             .setView(dialogView.root)
-            .setPositiveButton(getString(R.string.ok_button)) { _, _ -> }
-            .setNegativeButton(getString(R.string.cancel_button)) { _, _ -> }
+            .setPositiveButton(getString(R.string.ok_button))
+            .setNegativeButton(getString(R.string.cancel_button))
             .show()
     }
 
@@ -333,15 +330,14 @@ class AddressFragment : Fragment() {
             }
         }
 
-        val insertNumberDialog = MaterialAlertDialogBuilder(requireContext())
+        CustomDialog.Builder(requireContext())
             .setTitle(getString(R.string.insert_number))
             .setView(dialogView.root)
-            .setPositiveButton(getString(R.string.ok_button)) { _, _ ->
+            .setPositiveButton(getString(R.string.ok_button)) {
                 binding.insertNumberEditText.setText(number.toString())
             }
-            .setNegativeButton(getString(R.string.cancel_button)) { _, _ -> }
-            .create()
-        insertNumberDialog.show()
+            .setNegativeButton(getString(R.string.cancel_button))
+            .show()
     }
 
     private fun showReferencePointInputDialog() {
@@ -358,15 +354,14 @@ class AddressFragment : Fragment() {
             selectedPlace
         )
 
-        val insertReferencePointDialog = MaterialAlertDialogBuilder(requireContext())
+        val insertReferencePointDialog = CustomDialog.Builder(requireContext())
             .setTitle(getString(R.string.insert_reference_point))
             .setView(dialogView.root)
-            .setPositiveButton("Sim", null)
-            .setNegativeButton("Não", null)
-            .create()
-        insertReferencePointDialog.show()
+            .setPositiveButton("Sim")
+            .setNegativeButton("Não")
+            .show()
 
-        val negativeButton = insertReferencePointDialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+        val negativeButton = insertReferencePointDialog.getButton(CustomDialog.BUTTON_NEGATIVE)
         negativeButton.setOnClickListener {
             okCount = 0
             selectedPlace = referencePoints.random()
@@ -378,7 +373,7 @@ class AddressFragment : Fragment() {
             )
         }
 
-        val positiveButton = insertReferencePointDialog.getButton(AlertDialog.BUTTON_POSITIVE)
+        val positiveButton = insertReferencePointDialog.getButton(CustomDialog.BUTTON_POSITIVE)
         positiveButton.setOnClickListener {
             okCount++
 

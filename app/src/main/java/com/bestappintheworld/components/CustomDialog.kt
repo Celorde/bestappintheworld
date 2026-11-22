@@ -2,6 +2,7 @@ package com.bestappintheworld.components
 
 import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,13 +10,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ListView
 import android.widget.RadioButton
 import android.widget.TextView
 import androidx.core.view.isVisible
+import com.bestappintheworld.R
 import com.bestappintheworld.databinding.LayoutCustomDialogBinding
 
 class CustomDialog(context: Context) : Dialog(context) {
+
+    companion object {
+        const val BUTTON_POSITIVE = DialogInterface.BUTTON_POSITIVE
+        const val BUTTON_NEGATIVE = DialogInterface.BUTTON_NEGATIVE
+    }
 
     private lateinit var binding: LayoutCustomDialogBinding
 
@@ -28,9 +36,11 @@ class CustomDialog(context: Context) : Dialog(context) {
     
     private var positiveButtonText: String? = null
     private var positiveButtonAction: (() -> Unit)? = null
+    private var positiveButtonCustomClickListener: View.OnClickListener? = null
     
     private var negativeButtonText: String? = null
     private var negativeButtonAction: (() -> Unit)? = null
+    private var negativeButtonCustomClickListener: View.OnClickListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +51,14 @@ class CustomDialog(context: Context) : Dialog(context) {
         window?.setBackgroundDrawableResource(android.R.color.transparent)
         
         setupUI()
+    }
+
+    fun getButton(whichButton: Int): Button {
+        return when (whichButton) {
+            BUTTON_POSITIVE -> binding.positiveButton
+            BUTTON_NEGATIVE -> binding.negativeButton
+            else -> throw IllegalArgumentException("Button type not supported: $whichButton")
+        }
     }
 
     private fun setupUI() {
@@ -60,7 +78,7 @@ class CustomDialog(context: Context) : Dialog(context) {
                 listView.adapter = object : ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, itemList) {
                     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
                         val view = super.getView(position, convertView, parent) as TextView
-                        view.setTextColor(context.getColor(android.R.color.white))
+                        view.setTextColor(context.getColor(R.color.on_surface))
                         return view
                     }
                 }
@@ -73,7 +91,7 @@ class CustomDialog(context: Context) : Dialog(context) {
             }
 
             customView?.let {
-                applyWhiteToRadioButtons(it)
+                applyThemedColors(it)
                 customViewContainer.addView(it)
                 customViewContainer.isVisible = true
             }
@@ -81,18 +99,26 @@ class CustomDialog(context: Context) : Dialog(context) {
             positiveButtonText?.let { text ->
                 positiveButton.text = text
                 positiveButton.isVisible = true
-                positiveButton.setOnClickListener {
-                    positiveButtonAction?.invoke()
-                    dismiss()
+                if (positiveButtonCustomClickListener != null) {
+                    positiveButton.setOnClickListener(positiveButtonCustomClickListener)
+                } else {
+                    positiveButton.setOnClickListener {
+                        positiveButtonAction?.invoke()
+                        dismiss()
+                    }
                 }
             }
 
             negativeButtonText?.let { text ->
                 negativeButton.text = text
                 negativeButton.isVisible = true
-                negativeButton.setOnClickListener {
-                    negativeButtonAction?.invoke()
-                    dismiss()
+                if (negativeButtonCustomClickListener != null) {
+                    negativeButton.setOnClickListener(negativeButtonCustomClickListener)
+                } else {
+                    negativeButton.setOnClickListener {
+                        negativeButtonAction?.invoke()
+                        dismiss()
+                    }
                 }
             }
             
@@ -100,13 +126,13 @@ class CustomDialog(context: Context) : Dialog(context) {
         }
     }
 
-    private fun applyWhiteToRadioButtons(view: View) {
+    private fun applyThemedColors(view: View) {
         if (view is RadioButton) {
-            view.setTextColor(context.getColor(android.R.color.white))
-            view.buttonTintList = ColorStateList.valueOf(context.getColor(android.R.color.white))
+            view.setTextColor(context.getColor(R.color.on_surface))
+            view.buttonTintList = ColorStateList.valueOf(context.getColor(R.color.primary))
         } else if (view is ViewGroup) {
             for (i in 0 until view.childCount) {
-                applyWhiteToRadioButtons(view.getChildAt(i))
+                applyThemedColors(view.getChildAt(i))
             }
         }
     }
